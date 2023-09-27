@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 require("dotenv").config();
+import mongoose from "mongoose";
 
+mongoose.connect("db");
 app.use(cors());
 app.use(express.static("public"));
 app.get("/", (req, res) => {
