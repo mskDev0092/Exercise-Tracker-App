@@ -1,6 +1,5 @@
-const { default: mongoose } = require("mongoose");
 import mongoose from "mongoose";
-const { Schema, model } = mongoose;
+const Schema = mongoose.Schema;
 const logSchema = new Schema({
   username: String,
   count: Number,
