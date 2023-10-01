@@ -39,15 +39,13 @@ router.post("/users", async (req, res) => {
   const userObj = new User({ username: req.body.username });
 
   // Save the user to the database
-  const user = await userObj
-    .save()
-    .then((i) => {
-      res.json(user);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(400).send("Not saved!");
-    });
+  try {
+    const user = await userObj.save();
+    res.json(user);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send("Not saved!");
+  }
 });
 // Get all users
 router.get("/users", async (req, res) => {
@@ -120,7 +118,7 @@ router.get("/users/:_id/logs", async (req, res) => {
   }
   const userExercises = await Exercise.find(search).limit(+limit ?? 20);
 
-  const exerciseLogs = userExercises.map((c) => ({
+  const logs = userExercises.map((c) => ({
     description: c.description,
     duration: c.duration,
     date: c.date.toDateString(),
@@ -130,7 +128,7 @@ router.get("/users/:_id/logs", async (req, res) => {
     _id: user._id,
     username: user.username,
     count: userExercises.length,
-    exerciseLogs,
+    log: logs,
   });
 });
 
