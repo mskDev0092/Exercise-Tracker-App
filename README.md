@@ -45,12 +45,6 @@
 
 > The Exercise Tracker app project is a good starting point for building a more complex fitness tracking application.
 
-
-## Lessons Learned
-
-What did you learn while building this project? What challenges did you face and how did you overcome them?
-
-
 ## Screenshots
 
 ![App Screenshot](https://github.com/mskDev0092/Exercise-Tracker-App/blob/main/Screenshot%202023-10-01%20at%2011-20-40%20Exercise%20Tracker%20freeCodeCamp.png)
