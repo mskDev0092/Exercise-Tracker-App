@@ -10,10 +10,16 @@
   },
   "author": "Shehzad Khan",
   "dependencies": {
-    "body-parser": "^1.20.2",
+    "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.21.0",
+
+
+    "express": "^4.21.1",
+
+
+
+
     "helmet": "^7.0.0",
     "mongodb": "^6.1.0",
     "mongoose": "^7.5.3",
