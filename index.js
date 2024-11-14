@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import User from "./models/USER.js";
 import Exercise from "./models/EXERCISE.js";
+import RateLimit from "express-rate-limit";
 
 const app = express();
 const router = express.Router();
@@ -17,6 +18,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 dotenv.config();
+
+// set up rate limiter: maximum of 100 requests per 15 minutes
+const limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
 
 app.get("/", (req, res) => {
   res.sendFile(process.cwd() + "/views/index.html");
