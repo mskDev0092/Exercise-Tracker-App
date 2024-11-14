@@ -59,11 +59,21 @@
       </p>
     </div>
     <script>
+      function escapeHtml(unsafe) {
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
       const exerciseForm = document.getElementById("exercise-form");
 
       exerciseForm.addEventListener("submit", () => {
         const userId = document.getElementById("uid").value;
-        exerciseForm.action = `/api/users/${userId}/exercises`;
+        const sanitizedUserId = escapeHtml(userId);
+        exerciseForm.action = `/api/users/${sanitizedUserId}/exercises`;
 
         exerciseForm.submit();
       });
